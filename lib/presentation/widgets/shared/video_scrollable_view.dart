@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:toktik/domain/entities/videos_post.dart';
 import 'package:toktik/presentation/widgets/shared/video_buttons.dart';
-import 'package:toktik/shared/data/local_video_post.dart';
 
 class VideoScrollableView extends StatelessWidget {
   const VideoScrollableView({super.key, required this.videos});
