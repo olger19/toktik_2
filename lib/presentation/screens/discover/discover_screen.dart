@@ -9,14 +9,13 @@ class DiscoverScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //Si ingresan nuevo videos, quiero volver a dibujar
-    final discoverProvider = context.watch<DiscoverProvider>();
-
-    //final otroProvider = Provider.of<DiscoverProvider>(context);
+    // Si ingresan nuevo videos, quiero volver a dibujar
+    final discoverProvider = context.watch<DiscoverProvider>(); // Otra manera final otroProvider = Provider.of<DiscoverProvider>(context);
 
     return Scaffold(
       body: discoverProvider.initialLoading 
-      ? const Center(child: CircularProgressIndicator( strokeWidth: 2,)) // Indicador de carga aumentar el tamaño del indicador 
+      ? const Center(child: CircularProgressIndicator( strokeWidth: 2,)) // Indicador de carga aumentar el tamaño del indicador.
+      // VideoScrollableView, es nuestro custom widget para mostrar nuestro videos.
       : VideoScrollableView(videos: discoverProvider.videos));
   }
 }
