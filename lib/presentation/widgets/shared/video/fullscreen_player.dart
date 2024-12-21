@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:toktik/presentation/widgets/shared/video/video_background.dart';
 import 'package:video_player/video_player.dart';
 
 class FullScreenPlayer extends StatefulWidget {
@@ -43,22 +44,35 @@ class _FullScreenPlayerState extends State<FullScreenPlayer> {
             return const Center(
                 child: CircularProgressIndicator(strokeWidth: 2));
           }
-          //Aspecto visual del video
-          return AspectRatio(
-              aspectRatio: controller.value.aspectRatio,
-              child: Stack(
-                children: [
-                  VideoPlayer(controller),
-                  //Gradiente
+          //Aspecto visual del video envuelto en un GestureDetector para poder pausar o reproducir el video
+          return GestureDetector(
+            onTap: () {
+              //Pausar o reproducir el video
+              if (controller.value.isPlaying) {
+                controller.pause();
+                return;
+              } 
+              controller.play();
+            },
+            child: AspectRatio(
+                aspectRatio: controller.value.aspectRatio,
+                child: Stack(
+                  children: [
+                    VideoPlayer(controller),
+                    //Gradiente
 
-                  //Texto: Caption del video
-                  Positioned(
-                    bottom: 20,
-                    left: 20,
-                    child: _VideoCaption(caption: widget.caption),
-                  ),
-                ],
-              ));
+                    VideoBackground(
+                      stops: const [0.8,0.1]
+                    ),
+                    //Texto: Caption del video
+                    Positioned(
+                      bottom: 20,
+                      left: 20,
+                      child: _VideoCaption(caption: widget.caption),
+                    ),
+                  ],
+                )),
+          );
         });
   }
 }
@@ -66,7 +80,7 @@ class _FullScreenPlayerState extends State<FullScreenPlayer> {
 class _VideoCaption extends StatelessWidget {
   final String caption;
 
-  const _VideoCaption({required this.caption});
+  const _VideoCaption({super.key, required this.caption});
 
   @override
   Widget build(BuildContext context) {

@@ -23,15 +23,11 @@ class LocalVideoModel{
   // de nuestro LocalVideoModel
   factory LocalVideoModel.fromJson(Map<String,dynamic> json) => LocalVideoModel(
     // con el name: y con el json['name'], hacemos match
-    name: json['name'] ?? '', 
+    name: json['name'] ?? 'No name', 
     videoUrl: json["videoUrl"], 
-    likes: json["likes"], 
-    views: json["views"]
+    likes: json["likes"] ?? 0, 
+    views: json["views"] ?? 0,
     );
-  
-  Map<String, dynamic> toJson() => Message(
-
-  );
 
   //Mapeando:::Mapper
   VideoPost toVideoPostEntity() => VideoPost(
