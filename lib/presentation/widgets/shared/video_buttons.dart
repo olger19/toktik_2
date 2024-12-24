@@ -16,10 +16,10 @@ class VideoButtons extends StatelessWidget {
       children: [
         _CustomIconButton(value: video.likes, iconColor: Colors.red, iconData: Icons.favorite,),
         const SizedBox(height: 20,),
-        _CustomIconButton(value: video.views, iconData: Icons.favorite,),
+        _CustomIconButton(value: video.views, iconData: Icons.remove_red_eye_outlined,),
         const SizedBox(height: 20,),
 
-        //Animacion de caidad del icono con Animate_do
+        //Animacion del icono con Animate_do
         SpinPerfect(
           infinite: true,
           duration: const Duration(seconds: 4),
@@ -49,6 +49,7 @@ class _CustomIconButton extends StatelessWidget {
           onPressed: () {}, 
           icon: Icon(iconData, color: color, size: 30,)),
 
+          if(value > 0)
         Text(HumanFormats.humanReadbleNumber(value.toDouble())),
       ],
     );
