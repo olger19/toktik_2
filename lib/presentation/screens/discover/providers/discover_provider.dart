@@ -6,6 +6,7 @@ import 'package:toktik/shared/data/local_video_post.dart';
 
 // Ahora tengo accesible esta clase a lo largo de toda mi aplicacion
 class DiscoverProvider extends ChangeNotifier{
+  // TODO: DataSources, Repositories
   // Repository Va ser quien me va a permitir a mi lanzar las peticiones respectivas, DataSource Fuente de la data
 
   bool initialLoading = true;
