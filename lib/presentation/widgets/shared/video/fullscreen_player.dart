@@ -14,6 +14,7 @@ class FullScreenPlayer extends StatefulWidget {
 }
 
 class _FullScreenPlayerState extends State<FullScreenPlayer> {
+
   late VideoPlayerController controller;
   //Inicializar el video
   @override
@@ -60,9 +61,8 @@ class _FullScreenPlayerState extends State<FullScreenPlayer> {
                   children: [
                     VideoPlayer(controller),
                     //Gradiente
-
                     VideoBackground(
-                      stops: const [0.8,0.1]
+                      stops: const [0.8,1.0],
                     ),
                     //Texto: Caption del video
                     Positioned(
@@ -80,7 +80,7 @@ class _FullScreenPlayerState extends State<FullScreenPlayer> {
 class _VideoCaption extends StatelessWidget {
   final String caption;
 
-  const _VideoCaption({super.key, required this.caption});
+  const _VideoCaption({required this.caption});
 
   @override
   Widget build(BuildContext context) {
